@@ -1,6 +1,6 @@
 import React from 'react';
 import Job from "./job";
-
+import {FormattedMessage} from 'react-intl';
 export default class JobsList extends React.Component {
 
   state = { 
@@ -11,7 +11,8 @@ export default class JobsList extends React.Component {
     	  "company": "Schneider Electric", 
     	  "salary": 4.5,
     	  "city": "Bogotá, Colombia",
-        "date": "2019-03-26"
+        "date": "2019-03-26",
+        "views": "12000"
       }, 
       {
         "id": "0002",
@@ -19,7 +20,8 @@ export default class JobsList extends React.Component {
         "company": "Google Inc.", 
         "salary": 20,
         "city": "Palo Alto, CA, USA",
-        "date": "2019-03-27"
+        "date": "2019-03-27",
+        "views": "1233"
       },
       {
         "id": "0003",
@@ -27,7 +29,8 @@ export default class JobsList extends React.Component {
         "company": "Clínica La Aurora", 
         "salary": 1,
         "city": "Cali, Colombia",
-        "date": "2019-03-28"
+        "date": "2019-03-28",
+        "views": "84"
       }
     ]
   };
@@ -36,16 +39,19 @@ export default class JobsList extends React.Component {
     return (
       <div>
         <table className="table">
-          <thead className="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Position</th>
-              <th scope="col">Company</th>
-              <th scope="col">Salary</th>
-              <th scope="col">City</th>
-              <th scope="col">Publication date</th>
+        <FormattedMessage id='BackgroundTableHeader' children={msg=> 
+        <thead className={msg}>
+          <tr>
+              <th scope="col"><FormattedMessage id="#"/></th>
+              <th scope="col"> <FormattedMessage id="Position"/></th>
+              <th scope="col"> <FormattedMessage id="Company"/></th>
+              <th scope="col"> <FormattedMessage id="Salary"/></th>
+              <th scope="col"> <FormattedMessage id="City"/></th>
+              <th scope="col"> <FormattedMessage id="PulibicationDate"/></th>
+              <th scope="col"> <FormattedMessage id="Views"/></th>
             </tr>
-          </thead>
+            </thead>
+          }/>
           <tbody>
               {this.state.offers.map( (e,i) => <Job key={i} offer={e}/>)}
           </tbody>
